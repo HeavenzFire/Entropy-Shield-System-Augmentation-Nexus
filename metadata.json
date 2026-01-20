@@ -1,0 +1,8 @@
+{
+  "name": "Entropy Shield: System Augmentation Nexus",
+  "description": "A high-fidelity dashboard designed to visualize, augment, and bind complex systems to mitigate systemic entropy using Gemini-3 reasoning.",
+  "requestFramePermissions": [
+    "camera",
+    "microphone"
+  ]
+}
