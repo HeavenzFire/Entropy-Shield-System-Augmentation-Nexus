@@ -9,7 +9,6 @@
     "preview": "vite preview"
   },
   "dependencies": {
-    "@google/genai": "^1.35.0",
     "react": "^19.2.3",
     "react-dom": "^19.2.3",
     "d3": "^7.9.0",
@@ -21,5 +20,6 @@
     "@vitejs/plugin-react": "^5.0.0",
     "typescript": "~5.8.2",
     "vite": "^6.2.0"
-  }
+  },
+  "description": "Local-first system augmentation dashboard powered by Ollama; no hosted model API key required."
 }

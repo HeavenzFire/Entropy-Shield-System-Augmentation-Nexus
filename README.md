@@ -1,20 +1,29 @@
-<div align="center">
-<img width="1200" height="475" alt="GHBanner" src="https://github.com/user-attachments/assets/0aa67016-6eaf-458a-adb2-6e31a0763ed6" />
-</div>
+# Entropy Shield — Local-First Edition
 
-# Run and deploy your AI Studio app
+The app uses a local Ollama model for protocol suggestions and system-state summaries. It no longer requires a Gemini API key or sends these prompts to a hosted model provider.
 
-This contains everything you need to run your app locally.
+## Run locally
 
-View your app in AI Studio: https://ai.studio/apps/drive/1cl97t0CSDy2YANedrnGBYJPOxaijuUSU
+Prerequisites: Node.js and Ollama on the same computer.
 
-## Run Locally
+```powershell
+npm install
+ollama pull qwen2.5:0.5b
+npm run dev
+```
 
-**Prerequisites:**  Node.js
+Optional `.env.local` settings:
 
+```text
+LOCAL_LLM_BASE_URL=http://127.0.0.1:11434
+VITE_LOCAL_MODEL=qwen2.5:0.5b
+```
 
-1. Install dependencies:
-   `npm install`
-2. Set the `GEMINI_API_KEY` in [.env.local](.env.local) to your Gemini API key
-3. Run the app:
-   `npm run dev`
+The Vite dev/preview servers bind to 127.0.0.1 and proxy `/api/local-llm` to Ollama. No provider key is injected into browser JavaScript.
+
+## Limits and safety
+
+- The local model provides generated suggestions, not a trained PyTorch score, physical measurement, or verified consensus mechanism.
+- JSON output is validated before a protocol is returned. A failed model request yields no accepted strategy.
+- Keep Ollama and the Vite server on loopback; do not expose either to the public internet.
+- Local-model quality is not assumed to match Gemini 3 Pro/Flash. Verify suggestions independently before using them for consequential changes.
